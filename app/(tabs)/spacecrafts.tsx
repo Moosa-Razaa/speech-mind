@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 function Spacecrafts()
 {
     return (
-        <View>
+        <SafeAreaView>
             <Text>Welcome to the Spacecrafts component!</Text>
-        </View>
+        </SafeAreaView>
     );
 };
 
