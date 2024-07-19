@@ -1,7 +1,7 @@
 import { View, Text, Image } from "react-native";
 import TabIconProps from "./props";
 
-function TabIcon({ name, icon, color, focused, size } : TabIconProps)
+function TabIcon({ name, icon, color, focused } : TabIconProps)
 {
     return (
         <View className="flex items-center justify-center gap-1">
@@ -9,7 +9,7 @@ function TabIcon({ name, icon, color, focused, size } : TabIconProps)
                 source={icon}
                 resizeMode="contain"
                 tintColor={color}
-                className={`w-${size} h-${size}`}
+                className={`w-4 h-4`}
             />
             <Text
                 style={{ color: color }}

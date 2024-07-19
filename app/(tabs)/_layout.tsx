@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 import React from "react";
-import TabIcon from "../../components/TabIcon";
+import TabIcon from "../../components/tabIcon";
 
 function TabsLayout() {
 	return (
@@ -20,7 +20,7 @@ function TabsLayout() {
 			>
 				<Tabs.Screen
 					options={{
-						headerShown: false,
+						headerShown: true,
 						title: "Spaceships",
 						tabBarIcon: ({ color, focused }) => (
 							<TabIcon
@@ -28,7 +28,6 @@ function TabsLayout() {
 								icon={require("../../assets/Spaceship.png")}
 								color={color}
 								focused={focused}
-                                size={6}
 							/>
 						),
 					}}
@@ -36,7 +35,7 @@ function TabsLayout() {
 				/>
 				<Tabs.Screen
 					options={{
-						headerShown: false,
+						headerShown: true,
 						title: "Details",
 						tabBarIcon: ({ color, focused }) => (
 							<TabIcon
@@ -44,7 +43,6 @@ function TabsLayout() {
 								icon={require("../../assets/Details.png")}
 								color={color}
 								focused={focused}
-                                size={5}
 							/>
 						),
 					}}
