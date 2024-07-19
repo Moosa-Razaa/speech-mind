@@ -11,7 +11,11 @@ export default function App() {
 		<SafeAreaView className="flex-1 justify-center items-center bg-primaryWhite p-10px">
 			<View className="flex-1 justify-center items-start h-[40%] w-[100%] px-10 border-solid border-1 border-black">
 				<Text className="text-4xl font-bold text-left">
-					SpeechMind Assignment!
+					<Text className="text-4xl font-bold text-primaryDarkOrange">
+						SpeechMind
+					</Text>
+					{"\n"}
+					Assignment!
 				</Text>
 
 				<View className="h-[1px] w-[100%] bg-black my-5" />

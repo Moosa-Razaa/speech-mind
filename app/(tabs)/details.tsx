@@ -1,6 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
-import { View, Text, ActivityIndicator, ScrollView } from "react-native";
+import { View, Text, ActivityIndicator, ScrollView, Linking, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DateTime from "../../components/dateTime";
 
@@ -52,7 +52,24 @@ function Details() {
 	const actualTestClassesDarkGrey =
 		"font-mono font-bold text-base text-primaryuDarkGrey";
 	const actualTestClassesLink =
-		"font-mono font-bold text-base text-blue-500 underline";
+		"font-mono text-base text-blue-500 underline";
+
+	function LinkOnPressHandler(url: string)
+	{
+		Linking.openURL(url)
+		.catch(err => 
+			Alert.alert(
+				"Error",
+				`An error occurred while opening the link: ${err}`,
+				[
+					{
+						text: "OK",
+						onPress: () => console.log("OK Pressed"),
+					},
+				]
+			)
+		);
+	}
 
 	function Renderer() {
 		if (loading) {
@@ -123,13 +140,13 @@ function Details() {
 					</Text>
 					<Text className={textClasses}>
 						{`Twitter: `}
-						<Text className={actualTestClassesLink}>
+						<Text className={actualTestClassesLink} onPress={() => LinkOnPressHandler(queryData.company.links.twitter)}>
 							{queryData.company.links.twitter}
 						</Text>
 					</Text>
 					<Text className={textClasses}>
 						{`Website: `}
-						<Text className={actualTestClassesLink}>
+						<Text className={actualTestClassesLink} onPress={() => LinkOnPressHandler(queryData.company.links.website)}>
 							{queryData.company.links.website}
 						</Text>
 					</Text>
