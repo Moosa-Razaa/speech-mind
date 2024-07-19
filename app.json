@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "speech-mind",
+    "scheme": "speech-mind-assignment",
     "slug": "speech-mind",
     "version": "1.0.0",
     "orientation": "portrait",
