@@ -1,8 +1,8 @@
 type ShipsCardProps = {
     name: string,
-    image: string,
     active: boolean,
-    type: string
+    type: string,
+    onPress: () => void
 }
 
 export default ShipsCardProps;
