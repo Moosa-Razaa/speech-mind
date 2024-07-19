@@ -14,8 +14,20 @@ function RootLayout() {
 	return (
 		<ApolloProvider client={client}>
 			<Stack>
-				<Stack.Screen name="index" options={{ headerShown: false }} />
-				<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+				<Stack.Screen 
+					name="index" 
+					options={{ 
+						headerShown: false,
+						title: "Home"
+					}} 
+				/>
+				<Stack.Screen 
+					name="(tabs)" 
+					options={{ 
+						headerShown: true,
+						title: "SpaceX Explorer" 
+					}} 
+				/>
 			</Stack>
 		</ApolloProvider>
 	);
