@@ -27,6 +27,7 @@ function ModalContent({ id, name, image, closeButtonOnPressHandler }: ModalConte
 	const valueClass = "text-base font-mono font-bold";
     const notMentionedClass = "text-primaryLightGrey";
 	const [showMore, setShowMore] = useState<boolean>(false);
+    const [imageUri, setImageUri] = useState<string>(image ? image : "https://images.unsplash.com/photo-1644640260506-4bbdca39a4c5?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 	const { loading, error, data } = useQuery(getShipInformationQuery, {
 		variables: { shipId: id },
 	});
@@ -57,6 +58,11 @@ function ModalContent({ id, name, image, closeButtonOnPressHandler }: ModalConte
         return "Not mentioned";
     }
 
+    function ImageOnError()
+    {
+        setImageUri("../../assets/placeHolder.jpeg");
+    }
+
 	if (showMore) {
 		shipDetails.push(
 			...ship.roles.map((role) => ({ label: "Role", value: role }))
@@ -68,10 +74,11 @@ function ModalContent({ id, name, image, closeButtonOnPressHandler }: ModalConte
 			<View className="flex-1 justify-start items-start h-[100%] w-[100%] p-4">
 				<Image
 					source={{
-						uri: image,
+						uri: imageUri,
 					}}
 					className="w-[100%] h-64"
 					resizeMode="contain"
+                    onError={ImageOnError}
 				/>
 
 				<View className="flex justify-center items-center h-auto w-[100%]">
@@ -82,7 +89,7 @@ function ModalContent({ id, name, image, closeButtonOnPressHandler }: ModalConte
 				</View>
 
 				<FlatList
-					className="flex-1 w-[100%] mt-3 mb-5 bg-primaryWhite border border-primaryWhite rounded-lg shadow-md"
+					className="flex-1 w-[100%] mt-3 mb-5 bg-primaryWhite border border-primaryWhite rounded-lg shadow-lg"
 					data={shipDetails}
 					renderItem={({ item }) => (
 						<View className="flex justify-center items-start p-2">
