@@ -2,6 +2,10 @@ import { router } from "expo-router";
 import { Button, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+// Main frontpage component layout. It contains a brief description of SpaceX and a button to navigate to the spacecrafts page.
+// Used expo-router to navigate to the spacecrafts page.
+// SpaceX description is copied from their official website.
+
 export default function App() {
 	function onPressHandler() {
 		router.push("/spacecrafts");

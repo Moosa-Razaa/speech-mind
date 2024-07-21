@@ -4,6 +4,7 @@ import { View, Text, ActivityIndicator, ScrollView, Linking, Alert } from "react
 import { SafeAreaView } from "react-native-safe-area-context";
 import DateTime from "../../components/dateTime";
 
+// The graphqlQuery is a GraphQL query to get the company information. This is further fed in the useQuery hook to get the data.
 const graphqlQuery = gql`
 	query Company {
 		company {
@@ -26,6 +27,7 @@ const graphqlQuery = gql`
 	}
 `;
 
+// The Company type is an interface that defines the structure of the company object. It accomodates the response of the GraphQL query.
 type Company = {
 	ceo: string;
 	coo: string;
@@ -54,6 +56,7 @@ function Details() {
 	const actualTestClassesLink =
 		"font-mono text-base text-blue-500 underline";
 
+	// The LinkOnPressHandler function is called when the user presses the link, e.g: SpaceX twitter and website. It opens the link in the browser.
 	function LinkOnPressHandler(url: string)
 	{
 		Linking.openURL(url)
@@ -71,6 +74,7 @@ function Details() {
 		);
 	}
 
+	// Separated the conditional rendering logic into a separate function to make the code more readable.
 	function Renderer() {
 		if (loading) {
 			return (

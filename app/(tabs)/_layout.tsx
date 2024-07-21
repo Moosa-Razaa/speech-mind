@@ -2,6 +2,7 @@ import { Tabs } from "expo-router";
 import React from "react";
 import TabIcon from "../../components/tabIcon";
 
+// The TabsLayout component is a custom component that displays the tabs in the application.
 function TabsLayout() {
 	return (
 		<>
