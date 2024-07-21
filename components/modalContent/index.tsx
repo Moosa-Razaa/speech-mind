@@ -3,6 +3,7 @@ import { ModalContentProps, Ship } from "./props";
 import { View, Text, Image, Button, FlatList } from "react-native";
 import { gql, useQuery } from "@apollo/client";
 
+// Graphql query to get ship information with the given shipId. 
 const getShipInformationQuery = gql`
 	query Company($shipId: ID!) {
 		ship(id: $shipId) {
@@ -22,12 +23,23 @@ const getShipInformationQuery = gql`
 	}
 `;
 
+// The ModalContent component displays the detailed information of a ship.
+// The component takes the following props:
+// - id: The id of the ship.
+// - name: The name of the ship. I passed ship name as a prop because the SpaceX API does not provide the ship name when fetching the ship from shipId. It might be an error.
+// - image: The image url of the ship. For the following reasons, I added image uri as a prop.
+// - closeButtonOnPressHandler: A function that is called when the close button is pressed.
+
 function ModalContent({ id, name, image, closeButtonOnPressHandler }: ModalContentProps) {
 	const labelClass = "text-base font-mono ml-2";
 	const valueClass = "text-base font-mono font-bold";
     const notMentionedClass = "text-primaryLightGrey";
+
 	const [showMore, setShowMore] = useState<boolean>(false);
+
+	// The imageUri state is used to store the image uri of the ship. If the image uri is not provided, the default image uri is used. I have picked a random image from unsplash.
     const [imageUri, setImageUri] = useState<string>(image ? image : "https://images.unsplash.com/photo-1644640260506-4bbdca39a4c5?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+	
 	const { loading, error, data } = useQuery(getShipInformationQuery, {
 		variables: { shipId: id },
 	});
@@ -36,6 +48,8 @@ function ModalContent({ id, name, image, closeButtonOnPressHandler }: ModalConte
 	if (error) return <Text>Error: {error.message}</Text>;
 	const ship: Ship = data.ship as Ship;
 
+	// The shipDetails array contains the ship details that are displayed in the modal.
+	// Created an array of objects with label and value properties to display the ship details in a FlatList component.
 	const shipDetails = [
 		{ label: "Id", value: id },
 		{ label: "Type", value: ship.type },
@@ -49,6 +63,7 @@ function ModalContent({ id, name, image, closeButtonOnPressHandler }: ModalConte
 		{ label: "Status", value: ship.status },
 	];
 
+	// For a better experience, this function will take the value of the property and return a string to display instead of displaying null.
 	function DisplayData(value: string | boolean | number) 
     {
         if(value === true) return "True";
@@ -58,6 +73,7 @@ function ModalContent({ id, name, image, closeButtonOnPressHandler }: ModalConte
         return "Not mentioned";
     }
 
+	// If the image fails to load, the default image uri is used.
     function ImageOnError()
     {
         setImageUri("../../assets/placeHolder.jpeg");

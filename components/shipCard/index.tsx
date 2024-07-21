@@ -2,6 +2,14 @@ import React from "react";
 import { View, Text, Pressable } from "react-native";
 import ShipsCardProps from "./props";
 
+// The ShipCard component is a custom component that displays the details of a ship.
+// This component is displayed in the spacecrafts screen of the application.
+// The component takes the following props:
+// - name: The name of the ship.
+// - active: A boolean value that indicates whether the ship is active or not.
+// - type: The type of the ship.
+// - onPress: A function that is called when the "More Info" text is pressed.
+
 function ShipCard({ name, active, type, onPress }: ShipsCardProps) {
 	return (
 		<View className="w-[100%] h-[120px] p-4 mb-3 bg-primaryWhite rounded-lg flex flex-row">

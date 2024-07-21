@@ -5,6 +5,7 @@ import ShipCard from "../../components/shipCard";
 import { gql, useQuery } from "@apollo/client";
 import ModalContent from "../../components/modalContent";
 
+// GraphQL query to fetch the array of ships from SpaceX api.
 const getRockets = gql`
 	query Ships {
 		ships {
