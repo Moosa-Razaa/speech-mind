@@ -7,7 +7,7 @@ This is a React Native application that utilizes the SpaceX API to fetch data ab
 - React Native 18.2.0
 - Expo
 - Expo Routing
-- Tailwind CSS
+- Nativewind CSS
 
 ## Installation
 
